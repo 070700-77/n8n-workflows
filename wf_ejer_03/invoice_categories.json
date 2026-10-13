@@ -1,0 +1,423 @@
+{
+    "empty_info": [],
+    "conciliated": [
+        {
+            "id": 1,
+            "result": "OK"
+        },
+        {
+            "id": 2,
+            "result": "OK"
+        },
+        {
+            "id": 3,
+            "result": "OK"
+        },
+        {
+            "id": 4,
+            "result": "OK"
+        },
+        {
+            "id": 5,
+            "result": "OK"
+        },
+        {
+            "id": 6,
+            "result": "OK"
+        },
+        {
+            "id": 7,
+            "result": "OK"
+        },
+        {
+            "id": 8,
+            "result": "OK"
+        },
+        {
+            "id": 9,
+            "result": "OK"
+        },
+        {
+            "id": 10,
+            "result": "OK"
+        },
+        {
+            "id": 11,
+            "result": "OK"
+        },
+        {
+            "id": 12,
+            "result": "OK"
+        }
+    ],
+    "api_only": [
+        {
+            "id": 14,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 15,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 16,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 17,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 18,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 19,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 20,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 21,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 22,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 23,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 24,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 25,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 26,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 27,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 28,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 29,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 30,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 31,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 32,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 33,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 34,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 35,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 36,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 37,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 38,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 39,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 40,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 41,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 42,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 43,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 44,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 45,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 46,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 47,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 48,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 49,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 50,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 51,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 52,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 53,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 54,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 55,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 56,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 57,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 58,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 59,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 60,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 61,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 62,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 63,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 64,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 65,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 66,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 67,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 68,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 69,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 70,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 71,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 72,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 73,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 74,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 75,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 76,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 77,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 78,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 79,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 80,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 81,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 82,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 83,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 84,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 85,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 86,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 87,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 88,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 89,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 90,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 91,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 92,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 93,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 94,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 95,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 96,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 97,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 98,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 99,
+            "result": "Program couldnt found id in Sheets invoices"
+        },
+        {
+            "id": 100,
+            "result": "Program couldnt found id in Sheets invoices"
+        }
+    ],
+    "sheet_only": [
+        {
+            "id": 9001,
+            "result": "Program couldnt found id APIs invoices "
+        },
+        {
+            "id": 9002,
+            "result": "Program couldnt found id APIs invoices "
+        },
+        {
+            "id": 9003,
+            "result": "Program couldnt found id APIs invoices "
+        }
+    ],
+    "amount_discrepancy": [
+        {
+            "id": 13,
+            "result": "The result of the crosschecking between both invoice records generates a discrepancy of: $3.0"
+        }
+    ]
+}

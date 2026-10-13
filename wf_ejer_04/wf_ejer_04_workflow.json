@@ -1,0 +1,2083 @@
+{
+  "name": "test_wf_04",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/scripts/wf_ejer_04/input1_docsguardados.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        768,
+        16
+      ],
+      "id": "f8cb1032-4728-40c5-9a17-833024c9f6f1",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        368,
+        16
+      ],
+      "id": "b8f0fecd-4f8a-4068-b697-f3af276d94e5",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_012",
+          "mode": "list",
+          "cachedResultName": "ENTRADAAS 09/2026",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/GOOGLE_FILE_ID_012"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        16
+      ],
+      "id": "61824b97-536f-4a19-897a-b277b12e074d",
+      "name": "Google Drive Trigger1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_013",
+          "mode": "list",
+          "cachedResultName": "wf_04_empleados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_013/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 899028105,
+          "mode": "list",
+          "cachedResultName": "Empleados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_013/edit#gid=899028105"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        400,
+        320
+      ],
+      "id": "9cdff194-4107-4297-a387-15cb9c24fe16",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        320
+      ],
+      "id": "fb19c17c-ff18-4ce8-87f3-53e1b310d761",
+      "name": "Convert to File1"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/scripts/wf_ejer_04/input0_listaempleados.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        320
+      ],
+      "id": "19b68670-da7e-4bf4-85ec-08b7dfe1199e",
+      "name": "Read/Write Files from Disk1"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_04/wf_04_validar_nombres_archivos.py"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        16
+      ],
+      "id": "61896ff1-1ae5-4dad-b1a8-47c87af4d816",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_04/fname_validation_results.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        16
+      ],
+      "id": "67bbbc2b-3667-412f-b358-10caa3550ea3",
+      "name": "Read/Write Files from Disk2"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        1744,
+        16
+      ],
+      "id": "b4065401-d4ef-42a0-be3f-13a90d2eef0f",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        16
+      ],
+      "id": "46682526-c3e7-411f-a062-2f88b4e3b38b",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        32,
+        320
+      ],
+      "id": "1abe33eb-bd4e-4b6b-a196-e21547ca16f4",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b362a7dc-77c0-47e5-a354-b2a731c85b63",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "ok",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2304,
+        16
+      ],
+      "id": "fd75104b-c47e-49b5-928d-e9cf0c64f8d7",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2624,
+        0
+      ],
+      "id": "549dca6a-1cd2-4ab9-a9e8-c904f919a35a",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        4384,
+        -288
+      ],
+      "id": "bbde102a-ff68-4ec5-859e-ddd2cf3c9c5b"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.link }}",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $json.Sheet }}",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1936,
+        -336
+      ],
+      "id": "970926e4-6367-4eca-a8d8-eec6f2a8aef1",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "84a62fbc-7387-490a-bc2d-4d417c6ec7b6",
+              "name": "cedula",
+              "value": "={{ $json.cedula }}",
+              "type": "string"
+            },
+            {
+              "id": "9c980a98-2edf-48d3-b3c0-ba075b5bdf81",
+              "name": "fecha",
+              "value": "={{ $json.fecha }}",
+              "type": "string"
+            },
+            {
+              "id": "e3a0cb10-f90e-4e68-9e2d-4c761e203787",
+              "name": "valor",
+              "value": "={{ $json.valor }}",
+              "type": "string"
+            },
+            {
+              "id": "cb4a8f2a-d63c-4570-a211-6822db05af28",
+              "name": "moneda",
+              "value": "={{ $json.moneda }}",
+              "type": "string"
+            },
+            {
+              "id": "5940939d-be02-4e57-9de1-f111e0c256e8",
+              "name": "categoria",
+              "value": "={{ $json.categoria }}",
+              "type": "string"
+            },
+            {
+              "id": "ddba2cd4-4903-4d55-bb4d-89321bf0964e",
+              "name": "descripcion",
+              "value": "={{ $json.descripcion }}",
+              "type": "string"
+            },
+            {
+              "id": "54c636f7-8253-4ece-b3fc-15f6074414de",
+              "name": "tiene_soporte",
+              "value": "={{ $json.tiene_soporte }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4272,
+        -544
+      ],
+      "id": "465a3631-91d3-4c56-a2fe-03ed6444d6e6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2240,
+        -480
+      ],
+      "id": "15b7caf4-7962-4c13-b360-a5e0294a8ee4",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2496,
+        -544
+      ],
+      "id": "455c554e-b36a-42bf-9f1b-415a8c311779",
+      "name": "Convert to File2"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/scripts/wf_ejer_04/input_informacion_usuarios_ok.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2800,
+        -544
+      ],
+      "id": "e3158273-217d-4994-84b7-18bd41509037",
+      "name": "Read/Write Files from Disk3"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_04/agregar_nombre_resultados.py"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        3088,
+        -544
+      ],
+      "id": "23843eca-94fe-468f-9bbf-b0b5576e7c87",
+      "name": "Execute Command1"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_04/output_resultados.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3376,
+        -544
+      ],
+      "id": "9894d52b-b8bb-446c-887a-f81bae2f4f35",
+      "name": "Read/Write Files from Disk4"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        3664,
+        -544
+      ],
+      "id": "c50206a5-bb79-46ac-a38f-36bb9381a052",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3936,
+        -544
+      ],
+      "id": "feedf9f0-321e-4f54-9b18-34afc29de687",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2992,
+        -16
+      ],
+      "id": "fdaf6d97-142c-4652-9f01-419521368a1c",
+      "name": "Convert to File3"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/scripts/wf_ejer_04/info_consolidada_base.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        3296,
+        -16
+      ],
+      "id": "e27810ef-fab3-40ab-912b-68e281479364",
+      "name": "Read/Write Files from Disk5"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_04/calcular_viaticos.py"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        3680,
+        -16
+      ],
+      "id": "c3759024-6243-4e0b-8c70-be23aa3c7823",
+      "name": "Execute Command2"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_04/info_consolidada_contable.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4000,
+        -16
+      ],
+      "id": "49d3cdbd-8713-4f52-8b48-0ec9a4b91e51",
+      "name": "Read/Write Files from Disk6"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        4320,
+        -16
+      ],
+      "id": "8efa6cb8-f835-4756-804c-fc65dfb34f41",
+      "name": "Extract from File2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        4656,
+        -16
+      ],
+      "id": "b31c3688-c12f-40fb-b2b7-a5e4399b83ad",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_014",
+          "mode": "list",
+          "cachedResultName": "RESULTADO REGISTROS VIATICOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_014/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Registro consolidado invoices autorizados",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_014/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nombre": "={{ $json.nombre }}",
+            "cedula": "={{ $json.cedula }}",
+            "valor": "={{ $json.valor }}",
+            "moneda": "={{ $json.moneda }}",
+            "categoria ": "={{ $json.categoria }}",
+            "descripcion": "={{ $json.descripcion }}",
+            "tiene soporte": "={{ $json.tiene_soporte }}",
+            "tasa usada": "={{ $json.tasa_usada }}",
+            "valor convertido USD": "={{ $json.valor_convertido_USD }}",
+            "valor no respaldado USD": "={{ $json.valor_no_respaldado_USD }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "cedula",
+              "displayName": "cedula",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fecha ",
+              "displayName": "fecha ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "valor",
+              "displayName": "valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "moneda",
+              "displayName": "moneda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "categoria ",
+              "displayName": "categoria ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "descripcion",
+              "displayName": "descripcion",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tiene soporte",
+              "displayName": "tiene soporte",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tasa usada",
+              "displayName": "tasa usada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "valor convertido USD",
+              "displayName": "valor convertido USD",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "valor no respaldado USD",
+              "displayName": "valor no respaldado USD",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        4992,
+        -16
+      ],
+      "id": "45481443-eb6b-4d09-a5e1-5276ff176377",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_014",
+          "mode": "list",
+          "cachedResultName": "RESULTADO REGISTROS VIATICOS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_014/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 614176836,
+          "mode": "list",
+          "cachedResultName": "Archivos con error",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_014/edit#gid=614176836"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nombre": "={{ $json.name }}",
+            "resultado": "={{ $json.result }}",
+            "link": "={{ $json.link }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nombre",
+              "displayName": "nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resultado",
+              "displayName": "resultado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2752,
+        352
+      ],
+      "id": "2fe4aae6-0378-40fc-9a70-d68f29fed7d7",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Google Drive Trigger1": [
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_005&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_005/edit?usp=drivesdk",
+          "size": "1269",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_005",
+          "name": "gastos_5555555555_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T16:02:34.783Z",
+          "modifiedTime": "2026-10-08T16:02:34.785Z",
+          "modifiedByMeTime": "2026-10-08T16:02:34.785Z",
+          "viewedByMeTime": "2026-10-08T16:02:35.795Z",
+          "quotaBytesUsed": "1269",
+          "version": "6",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_006&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_006/edit?usp=drivesdk",
+          "size": "1372",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_006",
+          "name": "gastos_1098765432_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T16:02:12.874Z",
+          "modifiedTime": "2026-10-08T16:02:12.875Z",
+          "modifiedByMeTime": "2026-10-08T16:02:12.875Z",
+          "viewedByMeTime": "2026-10-08T16:02:15.525Z",
+          "quotaBytesUsed": "1372",
+          "version": "6",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 1
+        }
+      },
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_007&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_007/edit?usp=drivesdk",
+          "size": "1372",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_007",
+          "name": "gastos_1098765432_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T16:01:45.858Z",
+          "modifiedTime": "2026-10-08T16:01:45.859Z",
+          "modifiedByMeTime": "2026-10-08T16:01:45.859Z",
+          "viewedByMeTime": "2026-10-08T16:01:56.609Z",
+          "quotaBytesUsed": "1372",
+          "version": "6",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 2
+        }
+      },
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_008&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_008/edit?usp=drivesdk",
+          "size": "1364",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_008",
+          "name": "gastos_1033445566_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T16:01:31.157Z",
+          "modifiedTime": "2026-10-08T16:01:31.158Z",
+          "modifiedByMeTime": "2026-10-08T16:01:31.158Z",
+          "viewedByMeTime": "2026-10-08T16:01:32.097Z",
+          "quotaBytesUsed": "1364",
+          "version": "6",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 3
+        }
+      },
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_009&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_009/edit?usp=drivesdk",
+          "size": "1439",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_009",
+          "name": "gastos_1020304050_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T16:01:11.866Z",
+          "modifiedTime": "2026-10-08T16:01:11.867Z",
+          "modifiedByMeTime": "2026-10-08T16:01:11.867Z",
+          "viewedByMeTime": "2026-10-08T16:01:12.758Z",
+          "quotaBytesUsed": "1439",
+          "version": "6",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 4
+        }
+      },
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_010&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_010/edit?usp=drivesdk",
+          "size": "1422",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_010",
+          "name": "gastos_1018456721_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T16:00:24.505Z",
+          "modifiedTime": "2026-10-08T16:00:24.505Z",
+          "modifiedByMeTime": "2026-10-08T16:00:24.505Z",
+          "viewedByMeTime": "2026-10-08T16:00:26.296Z",
+          "quotaBytesUsed": "1422",
+          "version": "6",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 5
+        }
+      },
+      {
+        "json": {
+          "kind": "drive#file",
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "viewedByMe": true,
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=GOOGLE_FILE_ID_011&exportFormat=ods"
+          },
+          "parents": [
+            "GOOGLE_FILE_ID_012"
+          ],
+          "thumbnailLink": "https://example.com/REDACTED",
+          "iconLink": "https://example.com/REDACTED",
+          "shared": false,
+          "lastModifyingUser": {
+            "displayName": "Owner Name",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "00000000000000000000",
+            "emailAddress": "you@example.com",
+            "photoLink": "https://example.com/REDACTED"
+          },
+          "owners": [
+            {
+              "displayName": "Owner Name",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "00000000000000000000",
+              "emailAddress": "you@example.com",
+              "photoLink": "https://example.com/REDACTED"
+            }
+          ],
+          "webViewLink": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_011/edit?usp=drivesdk",
+          "size": "1245",
+          "viewersCanCopyContent": true,
+          "permissions": [
+            {
+              "id": "00000000000000000000",
+              "displayName": "Owner Name",
+              "type": "user",
+              "kind": "drive#permission",
+              "photoLink": "https://example.com/REDACTED",
+              "emailAddress": "you@example.com",
+              "role": "owner",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "hasThumbnail": true,
+          "spaces": [
+            "drive"
+          ],
+          "id": "GOOGLE_FILE_ID_011",
+          "name": "gasto_1098765432_2026-09",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "createdTime": "2026-10-08T15:59:58.744Z",
+          "modifiedTime": "2026-10-08T15:59:58.744Z",
+          "modifiedByMeTime": "2026-10-08T15:59:58.744Z",
+          "viewedByMeTime": "2026-10-08T16:02:59.315Z",
+          "quotaBytesUsed": "1245",
+          "version": "7",
+          "ownedByMe": true,
+          "isAppAuthorized": false,
+          "capabilities": {
+            "canChangeViewersCanCopyContent": true,
+            "canEdit": true,
+            "canCopy": true,
+            "canComment": true,
+            "canAddChildren": false,
+            "canDelete": true,
+            "canDownload": true,
+            "canListChildren": false,
+            "canRemoveChildren": false,
+            "canRename": true,
+            "canTrash": true,
+            "canReadRevisions": true,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canMoveItemIntoTeamDrive": true,
+            "canUntrash": true,
+            "canModifyContent": true,
+            "canMoveItemOutOfDrive": true,
+            "canAddMyDriveParent": false,
+            "canRemoveMyDriveParent": true,
+            "canMoveItemWithinDrive": true,
+            "canShare": true,
+            "canMoveChildrenWithinDrive": false,
+            "canModifyContentRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canAcceptOwnership": false,
+            "canReadLabels": false,
+            "canModifyLabels": false,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canRemoveContentRestriction": false,
+            "canDisableInheritedPermissions": false,
+            "canEnableInheritedPermissions": true,
+            "canChangeItemDownloadRestriction": true,
+            "canStartApproval": false,
+            "canAccessViaGenAi": true
+          },
+          "thumbnailVersion": "1",
+          "modifiedByMe": true,
+          "permissionIds": [
+            "00000000000000000000"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "inheritedPermissionsDisabled": false,
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "clientEncryptionDetails": {
+            "decryptionMetadata": {}
+          }
+        },
+        "pairedItem": {
+          "item": 6
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Convert to File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Convert to File3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Convert to File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "Execute Command1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk4": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File3": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk5": {
+      "main": [
+        [
+          {
+            "node": "Execute Command2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk6": {
+      "main": [
+        [
+          {
+            "node": "Extract from File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File2": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e45e4024-5e60-4a61-8e51-240bfa32a025",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_N8N_INSTANCE_ID"
+  },
+  "id": "C90jGmLoGwvpxqyk",
+  "tags": []
+}

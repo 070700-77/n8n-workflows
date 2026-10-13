@@ -1,0 +1,42 @@
+[
+    {
+        "name": "gastos_5555555555_2026-09",
+        "result": "Employee ID 5555555555 not found in employee list.",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_005/edit?usp=drivesdk"
+    },
+    {
+        "name": "gastos_1098765432_2026-09",
+        "result": "ok",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_006/edit?usp=drivesdk",
+        "Sheet": "Gastos"
+    },
+    {
+        "name": "gastos_1098765432_2026-09",
+        "result": "ok",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_007/edit?usp=drivesdk",
+        "Sheet": "Gastos"
+    },
+    {
+        "name": "gastos_1033445566_2026-09",
+        "result": "ok",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_008/edit?usp=drivesdk",
+        "Sheet": "Gastos"
+    },
+    {
+        "name": "gastos_1020304050_2026-09",
+        "result": "ok",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_009/edit?usp=drivesdk",
+        "Sheet": "Gastos"
+    },
+    {
+        "name": "gastos_1018456721_2026-09",
+        "result": "ok",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_010/edit?usp=drivesdk",
+        "Sheet": "Gastos"
+    },
+    {
+        "name": "gasto_1098765432_2026-09",
+        "result": "Invalid file name format. Expected string at the beggining of file: gastos",
+        "link": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_011/edit?usp=drivesdk"
+    }
+]

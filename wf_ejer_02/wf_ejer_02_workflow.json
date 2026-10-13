@@ -1,0 +1,397 @@
+{
+  "name": "wf_ejer_02_Bank Clients scoring",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1e292648-a1b5-4eeb-9346-ef8b961d84ad",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_02/wf_02_ingresar_bd.py\n"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2fd01c94-4b86-4d93-a720-b5ab4da077ae",
+      "name": "Execute Command"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_02/wf_02_consultar_bd_sqlite.py"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        432,
+        0
+      ],
+      "id": "c0c8921a-fb00-4010-9b8f-115fdc38b7bb",
+      "name": "Execute Command1"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_02/output_2.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        640,
+        0
+      ],
+      "id": "72bea55e-b300-49de-9ca6-a73f8f409e0a",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        864,
+        0
+      ],
+      "id": "c5e4e770-c716-4f38-8ed8-67d5483f21ae",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_002",
+          "mode": "list",
+          "cachedResultName": "Bank_clients_ranking",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_002/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "users_rank",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_002/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json[\"data.profiles_rank\"].id }}",
+            "email": "={{ $json[\"data.profiles_rank\"].email }}",
+            "first_name": "={{ $json[\"data.profiles_rank\"].first_name }}",
+            "last_name": "={{ $json[\"data.profiles_rank\"].last_name }}",
+            "account_type": "={{ $json[\"data.profiles_rank\"].account_type }}",
+            "account_rank": "={{ $json[\"data.profiles_rank\"].account_rank }}",
+            "birth_date": "={{ $json[\"data.profiles_rank\"].birth_date }}",
+            "age": "={{ $json[\"data.profiles_rank\"].age }}",
+            "age_rank": "={{ $json[\"data.profiles_rank\"].age_rank }}",
+            "completed_purchase": "={{ $json[\"data.profiles_rank\"].completed_purchase }}",
+            "failed_purchase": "={{ $json[\"data.profiles_rank\"].failed_purchase }}",
+            "pending_purchase": "={{ $json[\"data.profiles_rank\"].pending_purchase }}",
+            "total_transacciones": "={{ $json[\"data.profiles_rank\"].total_transacciones }}",
+            "purchase_rank": "={{ $json[\"data.profiles_rank\"].purchase_rank }}",
+            "average_rank": "={{ $json[\"data.profiles_rank\"].average_rank }}",
+            "user_without_history": "={{ $json[\"data.profiles_rank\"][\"user without history\"] }}",
+            "valid_email": "={{ $json[\"data.profiles_rank\"].valid_email }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "account_type",
+              "displayName": "account_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "account_rank",
+              "displayName": "account_rank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "birth_date",
+              "displayName": "birth_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "age",
+              "displayName": "age",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "age_rank",
+              "displayName": "age_rank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "completed_purchase",
+              "displayName": "completed_purchase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "failed_purchase",
+              "displayName": "failed_purchase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pending_purchase",
+              "displayName": "pending_purchase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "total_transacciones",
+              "displayName": "total_transacciones",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "purchase_rank",
+              "displayName": "purchase_rank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "average_rank",
+              "displayName": "average_rank",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_without_history",
+              "displayName": "user_without_history",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "valid_email",
+              "displayName": "valid_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1440,
+        0
+      ],
+      "id": "029a7976-ef7b-44b5-8402-90723ff47e0e",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data.profiles_rank",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1136,
+        0
+      ],
+      "id": "44381cb4-7eb5-49f6-8139-3d383ec0af1f",
+      "name": "Split Out"
+    }
+  ],
+  "pinData": {
+    "Execute Command": [
+      {
+        "json": {
+          "exitCode": 0,
+          "stderr": "",
+          "stdout": "OK: 5 cards, 5 persons, 5 profiles insertados."
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command": {
+      "main": [
+        [
+          {
+            "node": "Execute Command1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Command1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a48ce67f-8a36-43de-9a16-09767531eb31",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_N8N_INSTANCE_ID"
+  },
+  "id": "IEm7bBY0H5EfWkk1",
+  "tags": []
+}

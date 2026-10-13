@@ -1,0 +1,1631 @@
+{
+  "name": "wf_ejer_01_estandarizar y guardar inventario en Sheet",
+  "nodes": [
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_01/ventas_20260728.csv",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        160,
+        0
+      ],
+      "id": "db3e1951-88fd-471e-aca4-447f2bd0806d",
+      "name": "02. Leer CSV de ventas"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/scripts/wf_ejer_01/input_1.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        0
+      ],
+      "id": "3a0d60c1-be0a-433d-a945-56c10fb48c7b",
+      "name": "06. Guardar JSON en disco"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1072,
+        0
+      ],
+      "id": "d1de21de-925e-4a72-b392-0e6b1563a69c",
+      "name": "05. Convertir a archivo JSON"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "29bd7b31-a42a-4d87-8930-7e87693ffb53",
+              "name": "fecha",
+              "value": "={{ $json[\" fecha\"] }}",
+              "type": "string"
+            },
+            {
+              "id": "1b248132-0313-4eba-8a0f-6fbb98c38af9",
+              "name": "producto",
+              "value": "={{ $json[\"producto \"] }}",
+              "type": "string"
+            },
+            {
+              "id": "77fb36eb-b5cc-4a2a-89e5-c80ea3bd48a0",
+              "name": "precio_unitario",
+              "value": "={{ $json[\"precio_unitario \"] }}",
+              "type": "string"
+            },
+            {
+              "id": "f6128af8-5728-4287-b078-964bdcd6ccfe",
+              "name": "cantidad",
+              "value": "={{ $json[\" cantidad\"] }}",
+              "type": "number"
+            },
+            {
+              "id": "69259c76-7faa-46d1-a18b-4ebb88bdad38",
+              "name": "metodo_pago",
+              "value": "={{ $json.metodo_pago }}",
+              "type": "string"
+            },
+            {
+              "id": "a1f825a5-ede6-4e9a-b4a3-12943c27696b",
+              "name": "cliente_email",
+              "value": "={{ $json[\" cliente_email\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        784,
+        0
+      ],
+      "id": "0e891a90-9f9a-41c1-8901-4ec9f1e0345b",
+      "name": "04. Normalizar y formatear campos"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        464,
+        0
+      ],
+      "id": "edc78f41-0ccc-40da-b081-dd7d20503013",
+      "name": "03. Extraer filas del CSV"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        0
+      ],
+      "id": "fa499af0-6c3f-4a0c-b5a2-c6e85cc5024a",
+      "name": "01. Iniciar workflow"
+    },
+    {
+      "parameters": {
+        "content": "## 02. Leer CSV de ventas\nLee el archivo CSV (ventas_20260728.csv) desde /scripts/wf_ejer_01 en el disco.",
+        "height": 384,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        64,
+        -224
+      ],
+      "id": "0565365e-7e61-408a-a788-0e0d6cca845e",
+      "name": "Nota 02. Leer CSV de ventas"
+    },
+    {
+      "parameters": {
+        "content": "## 01. Iniciar workflow\nDisparador manual. Al presionar \"Execute workflow\" arranca todo el proceso de importación del CSV de ventas.",
+        "height": 384,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        -224
+      ],
+      "id": "3d684667-96cd-48ef-ab8f-a04f4d11b460",
+      "name": "Nota 01. Iniciar workflow"
+    },
+    {
+      "parameters": {
+        "content": "## 03. Extraer filas del CSV\nConvierte el archivo CSV en 18 filas de datos (una por cada venta), listas para procesar.",
+        "height": 384,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        384,
+        -224
+      ],
+      "id": "a2753cca-0ce7-4043-8bb1-e9391ce1ac39",
+      "name": "Nota 03. Extraer filas del CSV"
+    },
+    {
+      "parameters": {
+        "content": "## 04. Normalizar y formatear campos\nLimpia y organiza cada campo (fecha, producto, cantidad, precio, método de pago, email) con el formato correcto.",
+        "height": 384,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        688,
+        -224
+      ],
+      "id": "595fd351-6550-4dac-bf47-a8932ddae76a",
+      "name": "Nota 04. Normalizar y formatear campos"
+    },
+    {
+      "parameters": {
+        "content": "## 05. Convertir a archivo JSON\nJunta las 18 filas y las convierte en un único archivo JSON (file.json).",
+        "height": 384,
+        "width": 256
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        992,
+        -224
+      ],
+      "id": "82675961-d07a-490a-8d18-c011a4e0f07c",
+      "name": "Nota 05. Convertir a archivo JSON"
+    },
+    {
+      "parameters": {
+        "content": "## 06. Guardar JSON en disco\nGuarda el archivo JSON final en /scripts/wf_ejer_01/input_1.json, listo para el siguiente paso.",
+        "height": 384,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        -224
+      ],
+      "id": "e64c81e3-b82d-40b2-8ead-7bdb32a230b4",
+      "name": "Nota 06. Guardar JSON en disco"
+    },
+    {
+      "parameters": {
+        "content": "## 07. Estandarizar formato de fecha y precio con Python\nEstandariza el formato de la fecha de los registros a \"YYYY-MM-DD\", elimina el signo \"$\" del precio unitario y convierte el valor de un string a float (número con decimales)",
+        "height": 384,
+        "width": 288,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        -224
+      ],
+      "id": "eec3c978-9222-45ec-ab2b-b220691963fe",
+      "name": "Nota 07. Estandarizar formato de fecha y precio con Python"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_01/leer_json_registros_entrada.py"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        0
+      ],
+      "id": "8ea7a73e-86f0-4ff6-b0c7-2304934911f5",
+      "name": "07. Estandarizar formato de fecha y precio con Python"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_01/output_1.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1984,
+        0
+      ],
+      "id": "04a7ca7f-92cb-4fb6-8917-9f2e95f231db",
+      "name": "08. Leer JSON estandarizado del disco"
+    },
+    {
+      "parameters": {
+        "content": "## 08. Leer JSON estandarizado del disco\n\nLee el archivo JSON binario (output_1.json) ya estandarizado, guardado en /scripts/wf_ejer_01/output_1.json, para continuar el procesamiento.",
+        "height": 384,
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1888,
+        -224
+      ],
+      "id": "99902ab3-40ea-4d80-9ee6-6431bd354fe5",
+      "name": "Nota 08. Leer JSON estandarizado del disco"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        2304,
+        0
+      ],
+      "id": "8a1bd2c0-cd10-4f6f-a418-64ec16a1071d",
+      "name": "09. Extraer datos de ventas del JSON"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2608,
+        0
+      ],
+      "id": "345e3d62-f29f-4762-9e47-192a32a3edf6",
+      "name": "10. Separar ventas en registros individuales"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9d7c3fc7-41a4-4be8-aa4f-dcaf44d41b31",
+              "leftValue": "={{ $json.producto }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "5abe657f-6ef7-49b3-8ff3-d9733f2efee5",
+              "leftValue": "={{ $json.cantidad }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        2896,
+        0
+      ],
+      "id": "5972ebbc-3a99-46c2-b2dc-b8ba3002da55",
+      "name": "11. Filtrar ventas válidas"
+    },
+    {
+      "parameters": {
+        "content": "## 09. Extraer datos de ventas del JSON\n\nConvierte el archivo JSON binario en un array de objetos con los datos de cada venta (fecha, producto, precio unitario, cantidad, método de pago y email del cliente), listos para procesar.",
+        "height": 384,
+        "width": 256
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2224,
+        -224
+      ],
+      "id": "38736886-7a9c-49aa-89b3-59485e7aa8b6",
+      "name": "Nota 09. Extraer datos de ventas del JSON"
+    },
+    {
+      "parameters": {
+        "content": "## 10. Separar ventas en registros individuales\n\nToma el array de ventas y lo divide en un ítem independiente por cada venta (18 items), para poder procesarlas una por una en los siguientes pasos.",
+        "height": 400,
+        "width": 288,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2512,
+        -224
+      ],
+      "id": "d558709f-770e-43fd-ad79-4ab2f5d2b5e1",
+      "name": "Nota 10. Separar ventas en registros individuales"
+    },
+    {
+      "parameters": {
+        "content": "## 11. Filtrar ventas válidas\n\nDescarta los registros con producto vacío o cantidad menor o igual a 0. De 18 ventas, conserva solo las 13 válidas para enviarlas a la hoja de cálculo.",
+        "height": 384,
+        "width": 256,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2816,
+        -208
+      ],
+      "id": "cb85083e-96e2-4507-af43-921c3bd361c0",
+      "name": "Nota 11. Filtrar ventas válidas"
+    },
+    {
+      "parameters": {
+        "content": "## 12. Guardar ventas en Google Sheets\n\nEscribe las 13 ventas válidas en la hoja \"wf_ejer_01_normalizar inventario\", agregando filas nuevas o actualizando las existentes según coincidencia por producto.",
+        "height": 384,
+        "width": 272,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3104,
+        -224
+      ],
+      "id": "835313c7-09e8-4ffb-bd1d-7d5396094465",
+      "name": "Nota 12. Guardar ventas en Google Sheets"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_001",
+          "mode": "list",
+          "cachedResultName": "wf_ejer_01_normalizar inventario",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_001/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "DETALLE",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_001/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha": "={{ $json.fecha }}",
+            "producto": "={{ $json.producto }}",
+            "precio_unitario": "={{ $json.precio_unitario }}",
+            "cantidad": "={{ $json.cantidad }}",
+            "metodo_pago": "={{ $json.metodo_pago }}",
+            "cliente_email": "={{ $json.cliente_email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "fecha",
+              "displayName": "fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "producto",
+              "displayName": "producto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "precio_unitario",
+              "displayName": "precio_unitario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cantidad",
+              "displayName": "cantidad",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "metodo_pago",
+              "displayName": "metodo_pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cliente_email",
+              "displayName": "cliente_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        3184,
+        0
+      ],
+      "id": "b53d181b-95e5-4fb3-ae6f-df3743fc738c",
+      "name": "12. Guardar ventas en Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "119763db-c031-478a-a3d8-4d3d5209a757",
+              "name": "producto",
+              "value": "={{ $json.producto }}",
+              "type": "string"
+            },
+            {
+              "id": "fb6a211d-fb5d-4c7d-b0b7-d35d3ce891ae",
+              "name": "precio_unitario",
+              "value": "={{ $json.precio_unitario }}",
+              "type": "number"
+            },
+            {
+              "id": "6c6c1598-68c1-4c74-a17c-c687c2fa8f63",
+              "name": "cantidad",
+              "value": "={{ $json.cantidad }}",
+              "type": "number"
+            },
+            {
+              "id": "c84df472-c19f-4614-b3e2-529c3e27ca13",
+              "name": "total_vendido",
+              "value": 0,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -208,
+        672
+      ],
+      "id": "f70d8ff1-da34-44b1-9ae5-b5f285ca8203",
+      "name": "13. Preparar campos para resumen"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        96,
+        672
+      ],
+      "id": "6cada593-c667-4e7b-9f07-9e6e12aaaf17",
+      "name": "14. Convertir ventas a archivo JSON"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "/scripts/wf_ejer_01/input_2.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        384,
+        672
+      ],
+      "id": "bad7a419-7f40-4bf7-8338-f7b01eed0a31",
+      "name": "15. Guardar JSON de ventas (input_2) en disco"
+    },
+    {
+      "parameters": {
+        "command": "python3 /scripts/wf_ejer_01/resumir_ventas.py"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        672,
+        672
+      ],
+      "id": "24b6e405-d9b5-4c23-a423-8847d8d3afc7",
+      "name": "16. Ejecutar script Python de resumen"
+    },
+    {
+      "parameters": {
+        "fileSelector": "/scripts/wf_ejer_01/output_2.json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        992,
+        672
+      ],
+      "id": "94b02bd2-44bd-4530-8fee-31d6d7569f89",
+      "name": "17. Leer resumen de ventas generado"
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        1312,
+        672
+      ],
+      "id": "d855697f-8eec-4b88-9a41-231a35239b30",
+      "name": "18. Extraer resumen de ventas del JSON"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data.desglose_de_ventas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        464
+      ],
+      "id": "1483f062-e144-421c-ad58-bc1d97c06bd1",
+      "name": "19. Separar desglose de ventas por producto"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_001",
+          "mode": "list",
+          "cachedResultName": "wf_ejer_01_normalizar inventario",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_001/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1573378542,
+          "mode": "list",
+          "cachedResultName": "RESUMEN",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_001/edit#gid=1573378542"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "producto": "={{ $json.producto }}",
+            "Total vendido": "={{ $json.total_vendido }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "producto",
+              "displayName": "producto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Total vendido",
+              "displayName": "Total vendido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "VALOR TOTAL VENDIDO DIA",
+              "displayName": "VALOR TOTAL VENDIDO DIA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "NUMERO VENTAS",
+              "displayName": "NUMERO VENTAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "TICKET PROMEDIO",
+              "displayName": "TICKET PROMEDIO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "FECHA",
+              "displayName": "FECHA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2128,
+        464
+      ],
+      "id": "c6564aad-b341-48fa-8b57-336664d8ff23",
+      "name": "20. Agregar fila de producto en RESUMEN",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "GOOGLE_FILE_ID_001",
+          "mode": "list",
+          "cachedResultName": "wf_ejer_01_normalizar inventario",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_001/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1573378542,
+          "mode": "list",
+          "cachedResultName": "RESUMEN",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/GOOGLE_FILE_ID_001/edit#gid=1573378542"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "FECHA": "={{ $json.data.resumen.fecha }}",
+            "TICKET PROMEDIO": "={{ $json.data.resumen.ticket_promedio }}",
+            "NUMERO VENTAS": "={{ $json.data.resumen.numero_de_ventas_diaria }}",
+            "VALOR TOTAL VENDIDO DIA": "={{ $json.data.resumen.valor_total_vendido }}"
+          },
+          "matchingColumns": [
+            "FECHA"
+          ],
+          "schema": [
+            {
+              "id": "producto",
+              "displayName": "producto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Total vendido",
+              "displayName": "Total vendido",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "VALOR TOTAL VENDIDO DIA",
+              "displayName": "VALOR TOTAL VENDIDO DIA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "NUMERO VENTAS",
+              "displayName": "NUMERO VENTAS",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "TICKET PROMEDIO",
+              "displayName": "TICKET PROMEDIO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FECHA",
+              "displayName": "FECHA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1984,
+        896
+      ],
+      "id": "d4c9ffb0-583d-4a8e-91eb-aabfc40c3e05",
+      "name": "21. Actualizar resumen diario en Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2544,
+        672
+      ],
+      "id": "8c201dbd-003c-43e3-b38e-ea9fe2b75aa1",
+      "name": "22. Unir detalle y resumen de ventas"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "producto",
+              "renameField": "={{ false }}"
+            },
+            {
+              "fieldToAggregate": "Total vendido"
+            },
+            {
+              "fieldToAggregate": "NUMERO VENTAS"
+            },
+            {
+              "fieldToAggregate": "FECHA"
+            },
+            {
+              "fieldToAggregate": "VALOR TOTAL VENDIDO DIA"
+            },
+            {
+              "fieldToAggregate": "TICKET PROMEDIO"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2896,
+        672
+      ],
+      "id": "dfaaeb99-0c46-4f32-88cd-73f89ced174e",
+      "name": "23. Agrupar productos y totales"
+    },
+    {
+      "parameters": {
+        "sendTo": "you@example.com",
+        "subject": "n8n_test: Update de inventario - WF_01",
+        "message": "=Se actualizo el valor total vendido con los nuevos invoinces de ventas para los siguientes productos: \n{{ $json.producto }} \n\nFECHA: {{ $json.FECHA }}\nTICKET PROMEDIO: {{ $json[\"TICKET PROMEDIO\"] }}\nVALOR TOTAL DE VENTAS: {{ $json[\"VALOR TOTAL VENDIDO DIA\"] }}\nNUMERO DE VENTAS: {{ $json[\"NUMERO VENTAS\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        3216,
+        672
+      ],
+      "id": "e32ad127-c4b0-4c71-88bc-391875e65cfa",
+      "name": "24. Enviar email de actualización de inventario",
+      "webhookId": "00000000-0000-0000-0000-000000000000",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 13. Preparar campos para resumen\n\nSelecciona los campos que necesita el script de resumen: producto, precio unitario y cantidad de cada venta. Además inicializa total_vendido en 0 para que luego lo calcule Python.",
+        "height": 384,
+        "width": 288,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        448
+      ],
+      "id": "43df3da2-c9cc-41f0-a7e7-8ef1bed6ba6c",
+      "name": "Nota 13. Preparar campos para resumen"
+    },
+    {
+      "parameters": {
+        "content": "## 14. Convertir ventas a archivo JSON\n\nJunta todas las ventas preparadas y las convierte en un único archivo JSON (binario), listo para guardarse en disco.",
+        "height": 384,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        448
+      ],
+      "id": "a23213d2-8506-4f92-b403-5ba894c416c2",
+      "name": "Nota 14. Convertir ventas a archivo JSON"
+    },
+    {
+      "parameters": {
+        "content": "## 15. Guardar JSON de ventas en disco\n\nGuarda el archivo como /scripts/wf_ejer_01/input_2.json. Es el archivo de entrada que va a leer el script de resumen.",
+        "height": 384,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        288,
+        448
+      ],
+      "id": "dc1eba9f-6bca-414f-9185-8dee0769e4e4",
+      "name": "Nota 15. Guardar JSON de ventas en disco"
+    },
+    {
+      "parameters": {
+        "content": "## 16. Ejecutar script Python de resumen\n\nEjecuta resumir_ventas.py desde la línea de comandos. El script lee input_2.json y genera output_2.json con el resumen diario y el desglose de ventas por producto.",
+        "height": 384,
+        "width": 288,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        576,
+        448
+      ],
+      "id": "2acd6b50-93cb-4635-a231-8a04ae3b6ea2",
+      "name": "Nota 16. Ejecutar script Python de resumen"
+    },
+    {
+      "parameters": {
+        "content": "## 17. Leer resumen de ventas generado\n\nLee desde el disco el archivo output_2.json, que es el resultado calculado por el script de Python.",
+        "height": 384,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        896,
+        448
+      ],
+      "id": "672562ef-cc4e-4967-a056-803b1bd60e26",
+      "name": "Nota 17. Leer resumen de ventas generado"
+    },
+    {
+      "parameters": {
+        "content": "## 18. Extraer resumen de ventas del JSON\n\nConvierte el JSON binario en datos utilizables dentro del campo data: fecha, ticket promedio, número de ventas, valor total vendido y desglose por producto.",
+        "height": 384,
+        "width": 288
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1216,
+        448
+      ],
+      "id": "4637d655-1d85-47e1-ad77-4a5182895897",
+      "name": "Nota 18. Extraer resumen de ventas del JSON"
+    },
+    {
+      "parameters": {
+        "content": "## 19. Separar desglose de ventas por producto\n\nToma la lista data.desglose_de_ventas y la separa en un registro por producto, para escribirlos uno a uno.",
+        "height": 384,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1728,
+        240
+      ],
+      "id": "2eaf8075-0510-4524-8f7b-fe3a769ed55b",
+      "name": "Nota 19. Separar desglose de ventas por producto"
+    },
+    {
+      "parameters": {
+        "content": "## 20. Agregar fila de producto en RESUMEN\n\nAgrega en la hoja RESUMEN de Google Sheets una fila por producto, con las columnas producto y Total vendido.",
+        "height": 384,
+        "width": 272,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2032,
+        240
+      ],
+      "id": "3f948f4a-d5ec-4ae2-909b-1a6fa17ebbcf",
+      "name": "Nota 20. Agregar fila de producto en RESUMEN"
+    },
+    {
+      "parameters": {
+        "content": "## 21. Actualizar resumen diario en Sheets\n\nRama inferior. Escribe en la hoja RESUMEN el resumen del día (FECHA, TICKET PROMEDIO, NUMERO VENTAS y VALOR TOTAL VENDIDO DIA). Si la fecha ya existe actualiza la fila; si no, la agrega.",
+        "height": 384,
+        "width": 288,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1888,
+        672
+      ],
+      "id": "7a217f3e-b379-40dc-91fb-56cbcc81c074",
+      "name": "Nota 21. Actualizar resumen diario en Sheets"
+    },
+    {
+      "parameters": {
+        "content": "## 22. Unir detalle y resumen de ventas\n\nUne en un solo flujo las dos ramas anteriores: el detalle por producto y el resumen diario.",
+        "height": 384,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2448,
+        448
+      ],
+      "id": "deb66327-5df6-4e41-a719-2d4e81f9fcb7",
+      "name": "Nota 22. Unir detalle y resumen de ventas"
+    },
+    {
+      "parameters": {
+        "content": "## 23. Agrupar productos y totales\n\nAgrupa en listas los campos de producto, total vendido, fecha, número de ventas, valor total y ticket promedio, para armar un único registro para el correo.",
+        "height": 384,
+        "width": 272,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2800,
+        448
+      ],
+      "id": "c04d23ca-c4f6-4b14-ace4-3ed0218e720b",
+      "name": "Nota 23. Agrupar productos y totales"
+    },
+    {
+      "parameters": {
+        "content": "## 24. Enviar email de actualización de inventario\n\nEnvía un correo con Gmail avisando que se actualizó el inventario: incluye la fecha, los productos y los valores vendidos.",
+        "height": 384,
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        448
+      ],
+      "id": "879756ea-d77a-45c6-9d79-4eec737ca4fb",
+      "name": "Nota 24. Enviar email de actualización de inventario"
+    }
+  ],
+  "pinData": {
+    "03. Extraer filas del CSV": [
+      {
+        "json": {
+          " fecha": "2026/07/28",
+          "producto ": "Audífonos Bluetooth",
+          " cantidad": "3",
+          "precio_unitario ": "$89.900",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "juan.perez@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "28-07-2026",
+          "producto ": "Cargador USB-C 20W",
+          " cantidad": "5",
+          "precio_unitario ": "$35.500",
+          "metodo_pago": "Tarjeta",
+          " cliente_email": "maria.gomez@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/28",
+          "producto ": "Mouse inalámbrico",
+          " cantidad": "2",
+          "precio_unitario ": "$42.000",
+          "metodo_pago": "Efectivo"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "27-07-2026",
+          "producto ": "Audífonos Bluetooth",
+          " cantidad": "0",
+          "precio_unitario ": "$89.900",
+          "metodo_pago": "Tarjeta",
+          " cliente_email": "carlos.diaz@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/27",
+          " cantidad": "4",
+          "precio_unitario ": "$28.000",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "ana.lopez@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "26-07-2026",
+          "producto ": "Power bank 10000mAh",
+          " cantidad": "1",
+          "precio_unitario ": "$65.000",
+          "metodo_pago": "Transferencia",
+          " cliente_email": "pedro.ruiz@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/26",
+          "producto ": "Cargador USB-C 20W",
+          " cantidad": "-2",
+          "precio_unitario ": "$35.500",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "luisa.fernandez@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "25-07-2026",
+          "producto ": "Teclado mecánico",
+          " cantidad": "2",
+          "precio_unitario ": "$155.000",
+          "metodo_pago": "Tarjeta"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/25",
+          "producto ": "Mouse inalámbrico",
+          " cantidad": "6",
+          "precio_unitario ": "$42.000",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "jorge.diaz@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "24-07-2026",
+          "producto ": "Parlante portátil",
+          " cantidad": "3",
+          "precio_unitario ": "$120.000",
+          "metodo_pago": "Transferencia",
+          " cliente_email": "sofia.martin@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/24",
+          "producto ": "Power bank 10000mAh",
+          " cantidad": "2",
+          "precio_unitario ": "$65.000",
+          "metodo_pago": "Efectivo"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "23-07-2026",
+          "producto ": "Audífonos Bluetooth",
+          " cantidad": "7",
+          "precio_unitario ": "$89.900",
+          "metodo_pago": "Tarjeta",
+          " cliente_email": "andres.cruz@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/23",
+          " cantidad": "3",
+          "precio_unitario ": "$35.500",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "laura.ortiz@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "22-07-2026",
+          "producto ": "Cargador USB-C 20W",
+          " cantidad": "4",
+          "precio_unitario ": "$35.500",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "camila.rios@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/22",
+          "producto ": "Mouse inalámbrico",
+          " cantidad": "0",
+          "precio_unitario ": "$42.000",
+          "metodo_pago": "Tarjeta",
+          " cliente_email": "felipe.suarez@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "21-07-2026",
+          "producto ": "Teclado mecánico",
+          " cantidad": "5",
+          "precio_unitario ": "$155.000",
+          "metodo_pago": "Transferencia"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "2026/07/21",
+          "producto ": "Power bank 10000mAh",
+          " cantidad": "3",
+          "precio_unitario ": "$65.000",
+          "metodo_pago": "Efectivo",
+          " cliente_email": "valentina.gomez@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          " fecha": "20-07-2026",
+          "producto ": "Parlante portátil",
+          " cantidad": "2",
+          "precio_unitario ": "$120.000",
+          "metodo_pago": "Tarjeta",
+          " cliente_email": "sebastian.pena@example.com"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "15. Guardar JSON de ventas (input_2) en disco": [
+      {
+        "json": {
+          "fileName": "/scripts/wf_ejer_01/input_2.json"
+        },
+        "binary": {
+          "data": {
+            "mimeType": "application/json",
+            "fileType": "json",
+            "fileExtension": "json",
+            "data": "filesystem-v2",
+            "id": "filesystem-v2:workflows/qFvOVAAT0HU2YvdB/executions/251/binary_data/58dd4766-2f8f-4463-9d3d-218df1c88794",
+            "fileSize": "1.17 kB",
+            "fileName": "file.json"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "02. Leer CSV de ventas": {
+      "main": [
+        [
+          {
+            "node": "03. Extraer filas del CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "06. Guardar JSON en disco": {
+      "main": [
+        [
+          {
+            "node": "07. Estandarizar formato de fecha y precio con Python",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "05. Convertir a archivo JSON": {
+      "main": [
+        [
+          {
+            "node": "06. Guardar JSON en disco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "04. Normalizar y formatear campos": {
+      "main": [
+        [
+          {
+            "node": "05. Convertir a archivo JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "03. Extraer filas del CSV": {
+      "main": [
+        [
+          {
+            "node": "04. Normalizar y formatear campos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "01. Iniciar workflow": {
+      "main": [
+        [
+          {
+            "node": "02. Leer CSV de ventas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "07. Estandarizar formato de fecha y precio con Python": {
+      "main": [
+        [
+          {
+            "node": "08. Leer JSON estandarizado del disco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "08. Leer JSON estandarizado del disco": {
+      "main": [
+        [
+          {
+            "node": "09. Extraer datos de ventas del JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "09. Extraer datos de ventas del JSON": {
+      "main": [
+        [
+          {
+            "node": "10. Separar ventas en registros individuales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "10. Separar ventas en registros individuales": {
+      "main": [
+        [
+          {
+            "node": "11. Filtrar ventas válidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "11. Filtrar ventas válidas": {
+      "main": [
+        [
+          {
+            "node": "12. Guardar ventas en Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "13. Preparar campos para resumen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "12. Guardar ventas en Google Sheets": {
+      "main": [
+        []
+      ]
+    },
+    "13. Preparar campos para resumen": {
+      "main": [
+        [
+          {
+            "node": "14. Convertir ventas a archivo JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "14. Convertir ventas a archivo JSON": {
+      "main": [
+        [
+          {
+            "node": "15. Guardar JSON de ventas (input_2) en disco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "15. Guardar JSON de ventas (input_2) en disco": {
+      "main": [
+        [
+          {
+            "node": "16. Ejecutar script Python de resumen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "16. Ejecutar script Python de resumen": {
+      "main": [
+        [
+          {
+            "node": "17. Leer resumen de ventas generado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "17. Leer resumen de ventas generado": {
+      "main": [
+        [
+          {
+            "node": "18. Extraer resumen de ventas del JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "18. Extraer resumen de ventas del JSON": {
+      "main": [
+        [
+          {
+            "node": "19. Separar desglose de ventas por producto",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "21. Actualizar resumen diario en Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "19. Separar desglose de ventas por producto": {
+      "main": [
+        [
+          {
+            "node": "20. Agregar fila de producto en RESUMEN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "20. Agregar fila de producto en RESUMEN": {
+      "main": [
+        [
+          {
+            "node": "22. Unir detalle y resumen de ventas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "21. Actualizar resumen diario en Sheets": {
+      "main": [
+        [
+          {
+            "node": "22. Unir detalle y resumen de ventas",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "22. Unir detalle y resumen de ventas": {
+      "main": [
+        [
+          {
+            "node": "23. Agrupar productos y totales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "23. Agrupar productos y totales": {
+      "main": [
+        [
+          {
+            "node": "24. Enviar email de actualización de inventario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "004911fc-da48-41cf-a20d-22f635d1ea15",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_N8N_INSTANCE_ID"
+  },
+  "id": "qFvOVAAT0HU2YvdB",
+  "tags": []
+}

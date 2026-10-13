@@ -1,0 +1,16 @@
+{
+  "version": "2026-10-01",
+  "moneda_limites": "USD",
+  "limites_diarios_por_categoria_usd": {
+    "alimentacion": 60,
+    "transporte": 40,
+    "hospedaje": 180,
+    "otros": 25
+  },
+  "reglas": {
+    "sin_soporte_umbral_usd": 20,
+    "sin_soporte_mayor_a_umbral": "RECHAZADO",
+    "categoria_no_configurada": "RECHAZADO",
+    "exceso_limite_diario": "APROBACION_PARCIAL"
+  }
+}

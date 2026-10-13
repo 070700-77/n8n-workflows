@@ -1,0 +1,146 @@
+[
+    {
+        "fecha": "2026-07-28",
+        "producto": "Aud\u00edfonos Bluetooth",
+        "precio_unitario": 89900.0,
+        "cantidad": 3,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "juan.perez@example.com"
+    },
+    {
+        "fecha": "2026-07-28",
+        "producto": "Cargador USB-C 20W",
+        "precio_unitario": 35500.0,
+        "cantidad": 5,
+        "metodo_pago": "Tarjeta",
+        "cliente_email": "maria.gomez@example.com"
+    },
+    {
+        "fecha": "2026-07-28",
+        "producto": "Mouse inal\u00e1mbrico",
+        "precio_unitario": 42000.0,
+        "cantidad": 2,
+        "metodo_pago": "Efectivo",
+        "cliente_email": null
+    },
+    {
+        "fecha": "2026-07-27",
+        "producto": "Aud\u00edfonos Bluetooth",
+        "precio_unitario": 89900.0,
+        "cantidad": 0,
+        "metodo_pago": "Tarjeta",
+        "cliente_email": "carlos.diaz@example.com"
+    },
+    {
+        "fecha": "2026-07-27",
+        "producto": null,
+        "precio_unitario": 28000.0,
+        "cantidad": 4,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "ana.lopez@example.com"
+    },
+    {
+        "fecha": "2026-07-26",
+        "producto": "Power bank 10000mAh",
+        "precio_unitario": 65000.0,
+        "cantidad": 1,
+        "metodo_pago": "Transferencia",
+        "cliente_email": "pedro.ruiz@example.com"
+    },
+    {
+        "fecha": "2026-07-26",
+        "producto": "Cargador USB-C 20W",
+        "precio_unitario": 35500.0,
+        "cantidad": -2,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "luisa.fernandez@example.com"
+    },
+    {
+        "fecha": "2026-07-25",
+        "producto": "Teclado mec\u00e1nico",
+        "precio_unitario": 155000.0,
+        "cantidad": 2,
+        "metodo_pago": "Tarjeta",
+        "cliente_email": null
+    },
+    {
+        "fecha": "2026-07-25",
+        "producto": "Mouse inal\u00e1mbrico",
+        "precio_unitario": 42000.0,
+        "cantidad": 6,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "jorge.diaz@example.com"
+    },
+    {
+        "fecha": "2026-07-24",
+        "producto": "Parlante port\u00e1til",
+        "precio_unitario": 120000.0,
+        "cantidad": 3,
+        "metodo_pago": "Transferencia",
+        "cliente_email": "sofia.martin@example.com"
+    },
+    {
+        "fecha": "2026-07-24",
+        "producto": "Power bank 10000mAh",
+        "precio_unitario": 65000.0,
+        "cantidad": 2,
+        "metodo_pago": "Efectivo",
+        "cliente_email": null
+    },
+    {
+        "fecha": "2026-07-23",
+        "producto": "Aud\u00edfonos Bluetooth",
+        "precio_unitario": 89900.0,
+        "cantidad": 7,
+        "metodo_pago": "Tarjeta",
+        "cliente_email": "andres.cruz@example.com"
+    },
+    {
+        "fecha": "2026-07-23",
+        "producto": null,
+        "precio_unitario": 35500.0,
+        "cantidad": 3,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "laura.ortiz@example.com"
+    },
+    {
+        "fecha": "2026-07-22",
+        "producto": "Cargador USB-C 20W",
+        "precio_unitario": 35500.0,
+        "cantidad": 4,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "camila.rios@example.com"
+    },
+    {
+        "fecha": "2026-07-22",
+        "producto": "Mouse inal\u00e1mbrico",
+        "precio_unitario": 42000.0,
+        "cantidad": 0,
+        "metodo_pago": "Tarjeta",
+        "cliente_email": "felipe.suarez@example.com"
+    },
+    {
+        "fecha": "2026-07-21",
+        "producto": "Teclado mec\u00e1nico",
+        "precio_unitario": 155000.0,
+        "cantidad": 5,
+        "metodo_pago": "Transferencia",
+        "cliente_email": null
+    },
+    {
+        "fecha": "2026-07-21",
+        "producto": "Power bank 10000mAh",
+        "precio_unitario": 65000.0,
+        "cantidad": 3,
+        "metodo_pago": "Efectivo",
+        "cliente_email": "valentina.gomez@example.com"
+    },
+    {
+        "fecha": "2026-07-20",
+        "producto": "Parlante port\u00e1til",
+        "precio_unitario": 120000.0,
+        "cantidad": 2,
+        "metodo_pago": "Tarjeta",
+        "cliente_email": "sebastian.pena@example.com"
+    }
+]

@@ -1,0 +1,88 @@
+{
+    "desglose_de_ventas": [
+        {
+            "producto": "Aud\u00edfonos Bluetooth",
+            "precio_unitario": 89900,
+            "cantidad": 3,
+            "total_vendido": 269700
+        },
+        {
+            "producto": "Cargador USB-C 20W",
+            "precio_unitario": 35500,
+            "cantidad": 5,
+            "total_vendido": 177500
+        },
+        {
+            "producto": "Mouse inal\u00e1mbrico",
+            "precio_unitario": 42000,
+            "cantidad": 2,
+            "total_vendido": 84000
+        },
+        {
+            "producto": "Power bank 10000mAh",
+            "precio_unitario": 65000,
+            "cantidad": 1,
+            "total_vendido": 65000
+        },
+        {
+            "producto": "Teclado mec\u00e1nico",
+            "precio_unitario": 155000,
+            "cantidad": 2,
+            "total_vendido": 310000
+        },
+        {
+            "producto": "Mouse inal\u00e1mbrico",
+            "precio_unitario": 42000,
+            "cantidad": 6,
+            "total_vendido": 252000
+        },
+        {
+            "producto": "Parlante port\u00e1til",
+            "precio_unitario": 120000,
+            "cantidad": 3,
+            "total_vendido": 360000
+        },
+        {
+            "producto": "Power bank 10000mAh",
+            "precio_unitario": 65000,
+            "cantidad": 2,
+            "total_vendido": 130000
+        },
+        {
+            "producto": "Aud\u00edfonos Bluetooth",
+            "precio_unitario": 89900,
+            "cantidad": 7,
+            "total_vendido": 629300
+        },
+        {
+            "producto": "Cargador USB-C 20W",
+            "precio_unitario": 35500,
+            "cantidad": 4,
+            "total_vendido": 142000
+        },
+        {
+            "producto": "Teclado mec\u00e1nico",
+            "precio_unitario": 155000,
+            "cantidad": 5,
+            "total_vendido": 775000
+        },
+        {
+            "producto": "Power bank 10000mAh",
+            "precio_unitario": 65000,
+            "cantidad": 3,
+            "total_vendido": 195000
+        },
+        {
+            "producto": "Parlante port\u00e1til",
+            "precio_unitario": 120000,
+            "cantidad": 2,
+            "total_vendido": 240000
+        }
+    ],
+    "resumen": {
+        "numero_de_ventas_diaria": 13,
+        "valor_total_vendido": 3629500,
+        "ticket_promedio": 279192.3076923077,
+        "fecha": "2026-10-08"
+    }
+}

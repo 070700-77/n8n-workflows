@@ -1,0 +1,270 @@
+{
+  "cards": [
+    {
+      "type": "visa",
+      "number": "4054 1635 1402 5165",
+      "rawNumber": "4054163514025165",
+      "expiry": "07/31",
+      "expiryMonth": "07",
+      "expiryYear": "2031",
+      "cvv": "781",
+      "name": "Daryl Stamm",
+      "address": {
+        "street": "466 Lubowitz Cliff",
+        "city": "Perris",
+        "state": "CO",
+        "zip": "54059",
+        "country": "USA"
+      }
+    },
+    {
+      "type": "diners",
+      "number": "3657 7138 8919 78",
+      "rawNumber": "36577138891978",
+      "expiry": "07/30",
+      "expiryMonth": "07",
+      "expiryYear": "2030",
+      "cvv": "793",
+      "name": "Dawn Little",
+      "address": {
+        "street": "41240 Quigley Lane",
+        "city": "Baytown",
+        "state": "FL",
+        "zip": "97702-1645",
+        "country": "USA"
+      }
+    }
+  ],
+  "persons": [
+    {
+      "firstName": "Leopoldo",
+      "lastName": "Swaniawski",
+      "gender": "Male to female trans woman",
+      "birthDate": "1990-09-11",
+      "address": {
+        "street": "63273 Mosciski Manor",
+        "city": "Gutmannshire",
+        "state": "DE",
+        "zip": "94826",
+        "country": "USA"
+      },
+      "phone": "886-311-2734 x4072",
+      "email": "Leopoldo.Swaniawski74@hotmail.com"
+    },
+    {
+      "firstName": "Edwina",
+      "lastName": "Will",
+      "gender": "Male to female trans woman",
+      "birthDate": "1967-07-23",
+      "address": {
+        "street": "202 Maude Extensions",
+        "city": "Friesenboro",
+        "state": "MO",
+        "zip": "46372-0246",
+        "country": "USA"
+      },
+      "phone": "(990) 379-0660",
+      "email": "Edwina.Will@gmail.com"
+    }
+  ],
+  "addresses": [
+    {
+      "street": "808 Zemlak Mews",
+      "city": "Littletown",
+      "state": "KY",
+      "zip": "26941-1291",
+      "country": "USA"
+    },
+    {
+      "street": "812 Union Avenue",
+      "city": "East Ryley",
+      "state": "NM",
+      "zip": "70960",
+      "country": "USA"
+    }
+  ],
+  "bankAccounts": [
+    {
+      "bankName": "Moore - Borer Bank",
+      "routingNumber": "214266177",
+      "accountNumber": "5080908099",
+      "accountType": "checking"
+    },
+    {
+      "bankName": "Leuschke, Wiegand and Labadie Bank",
+      "routingNumber": "118362193",
+      "accountNumber": "3053266090",
+      "accountType": "savings"
+    }
+  ],
+  "transactions": [
+    {
+      "amount": 315.79,
+      "currency": "USD",
+      "merchant": "Beer Group",
+      "category": "Entertainment",
+      "date": "2026-09-01",
+      "status": "completed"
+    },
+    {
+      "amount": 3740.37,
+      "currency": "USD",
+      "merchant": "Parker, Kuphal and Walker",
+      "category": "Healthcare",
+      "date": "2026-09-01",
+      "status": "completed"
+    },
+    {
+      "amount": 4296.41,
+      "currency": "USD",
+      "merchant": "McDermott, Donnelly and Mitchell",
+      "category": "Healthcare",
+      "date": "2026-08-24",
+      "status": "completed"
+    },
+    {
+      "amount": 3704.24,
+      "currency": "USD",
+      "merchant": "Kuhlman LLC",
+      "category": "Entertainment",
+      "date": "2026-08-11",
+      "status": "failed"
+    }
+  ],
+  "profiles": [
+    {
+      "person": {
+        "firstName": "Narciso",
+        "lastName": "Lockman",
+        "gender": "Gender neutral",
+        "birthDate": "1989-09-17",
+        "address": {
+          "street": "4431 Fourth Avenue",
+          "city": "New Marco",
+          "state": "CO",
+          "zip": "64597-1694",
+          "country": "USA"
+        },
+        "phone": "387.623.6532 x94147",
+        "email": "Narciso_Lockman@yahoo.com",
+        "ssn": "885109898"
+      },
+      "primaryCard": {
+        "type": "mastercard",
+        "number": "5162 8709 6786 9032",
+        "rawNumber": "5162870967869032",
+        "expiry": "12/27",
+        "expiryMonth": "12",
+        "expiryYear": "2027",
+        "cvv": "794",
+        "name": "Jackie Witting",
+        "address": {
+          "street": "975 Roob Union",
+          "city": "Lake Kailee",
+          "state": "MD",
+          "zip": "19292",
+          "country": "USA"
+        }
+      },
+      "bankAccount": {
+        "bankName": "Runolfsdottir and Sons Bank",
+        "routingNumber": "607995123",
+        "accountNumber": "5064236231",
+        "accountType": "savings"
+      },
+      "recentTransactions": [
+        {
+          "amount": 2680.01,
+          "currency": "USD",
+          "merchant": "Hintz and Sons",
+          "category": "Transport",
+          "date": "2026-08-22",
+          "status": "pending"
+        },
+        {
+          "amount": 1233.41,
+          "currency": "USD",
+          "merchant": "Mueller, Mitchell and Barton",
+          "category": "Utilities",
+          "date": "2026-08-16",
+          "status": "completed"
+        },
+        {
+          "amount": 1855.72,
+          "currency": "USD",
+          "merchant": "Grady - Kovacek",
+          "category": "Healthcare",
+          "date": "2026-08-16",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "person": {
+        "firstName": "Micah",
+        "lastName": "Turcotte",
+        "gender": "Cis female",
+        "birthDate": "1962-01-23",
+        "address": {
+          "street": "696 Cole Glens",
+          "city": "Douglasfort",
+          "state": "MI",
+          "zip": "14941-3553",
+          "country": "USA"
+        },
+        "phone": "(574) 992-4514 x5261",
+        "email": "Micah.Turcotte@gmail.com",
+        "ssn": "892544671"
+      },
+      "primaryCard": {
+        "type": "diners",
+        "number": "3671 8861 0412 05",
+        "rawNumber": "36718861041205",
+        "expiry": "10/30",
+        "expiryMonth": "10",
+        "expiryYear": "2030",
+        "cvv": "567",
+        "name": "Everett Greenholt MD",
+        "address": {
+          "street": "5453 St Andrews Close",
+          "city": "Bartellhaven",
+          "state": "CO",
+          "zip": "29663",
+          "country": "USA"
+        }
+      },
+      "bankAccount": {
+        "bankName": "Daugherty - Rogahn Bank",
+        "routingNumber": "721744784",
+        "accountNumber": "5325500593",
+        "accountType": "checking"
+      },
+      "recentTransactions": [
+        {
+          "amount": 449.54,
+          "currency": "USD",
+          "merchant": "Tremblay - Bradtke",
+          "category": "Healthcare",
+          "date": "2026-09-08",
+          "status": "pending"
+        },
+        {
+          "amount": 4965.87,
+          "currency": "USD",
+          "merchant": "Morar, Leffler and Rempel",
+          "category": "Groceries",
+          "date": "2026-09-03",
+          "status": "failed"
+        },
+        {
+          "amount": 1511.85,
+          "currency": "USD",
+          "merchant": "Parisian Inc",
+          "category": "Healthcare",
+          "date": "2026-08-17",
+          "status": "completed"
+        }
+      ]
+    }
+  ]
+}

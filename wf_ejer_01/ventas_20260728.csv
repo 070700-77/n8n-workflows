@@ -1,0 +1,19 @@
+ fecha,producto , cantidad,precio_unitario ,metodo_pago, cliente_email
+2026/07/28,Audífonos Bluetooth,3,$89.900,Efectivo,juan.perez@example.com
+28-07-2026,Cargador USB-C 20W,5,$35.500,Tarjeta,maria.gomez@example.com
+2026/07/28,Mouse inalámbrico,2,$42.000,Efectivo,
+27-07-2026,Audífonos Bluetooth,0,$89.900,Tarjeta,carlos.diaz@example.com
+2026/07/27,,4,$28.000,Efectivo,ana.lopez@example.com
+26-07-2026,Power bank 10000mAh,1,$65.000,Transferencia,pedro.ruiz@example.com
+2026/07/26,Cargador USB-C 20W,-2,$35.500,Efectivo,luisa.fernandez@example.com
+25-07-2026,Teclado mecánico,2,$155.000,Tarjeta,
+2026/07/25,Mouse inalámbrico,6,$42.000,Efectivo,jorge.diaz@example.com
+24-07-2026,Parlante portátil,3,$120.000,Transferencia,sofia.martin@example.com
+2026/07/24,Power bank 10000mAh,2,$65.000,Efectivo,
+23-07-2026,Audífonos Bluetooth,7,$89.900,Tarjeta,andres.cruz@example.com
+2026/07/23,,3,$35.500,Efectivo,laura.ortiz@example.com
+22-07-2026,Cargador USB-C 20W,4,$35.500,Efectivo,camila.rios@example.com
+2026/07/22,Mouse inalámbrico,0,$42.000,Tarjeta,felipe.suarez@example.com
+21-07-2026,Teclado mecánico,5,$155.000,Transferencia,
+2026/07/21,Power bank 10000mAh,3,$65.000,Efectivo,valentina.gomez@example.com
+20-07-2026,Parlante portátil,2,$120.000,Tarjeta,sebastian.pena@example.com

@@ -1,0 +1,62 @@
+[
+    {
+        "row_number": 2,
+        "fecha": "2026-09",
+        "categoria": "alimentacion",
+        "descripcion": "Desayuno en Lima",
+        "moneda": "PEN",
+        "valor": "48,50",
+        "tiene_soporte": "SI",
+        "cedula": "1018456721"
+    },
+    {
+        "row_number": 3,
+        "fecha": "2026-09",
+        "categoria": "alimentacion",
+        "descripcion": "Almuerzo con cliente",
+        "moneda": "PEN",
+        "valor": "92,00",
+        "tiene_soporte": "SI",
+        "cedula": "1018456721"
+    },
+    {
+        "row_number": 4,
+        "fecha": "2026-09",
+        "categoria": "alimentacion",
+        "descripcion": "Cena de trabajo",
+        "moneda": "PEN",
+        "valor": "180,00",
+        "tiene_soporte": "SI",
+        "cedula": "1018456721"
+    },
+    {
+        "row_number": 5,
+        "fecha": "2026-09",
+        "categoria": "hospedaje",
+        "descripcion": "Hotel - 2 noches",
+        "moneda": "PEN",
+        "valor": "1.250,50",
+        "tiene_soporte": "SI",
+        "cedula": "1018456721"
+    },
+    {
+        "row_number": 6,
+        "fecha": "2026-09",
+        "categoria": "transporte",
+        "descripcion": "Taxi aeropuerto-hotel",
+        "moneda": "PEN",
+        "valor": "85",
+        "tiene_soporte": "SI",
+        "cedula": "1018456721"
+    },
+    {
+        "row_number": 7,
+        "fecha": "2026-09",
+        "categoria": "otros",
+        "descripcion": "Lavandería",
+        "moneda": "PEN",
+        "valor": "55,00",
+        "tiene_soporte": "SI",
+        "cedula": "1018456721"
+    }
+]

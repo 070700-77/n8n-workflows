@@ -1,0 +1,31 @@
+# Credenciales — NUNCA subir
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Bases de datos locales generadas por los scripts (se recrean al ejecutar)
+*.db
+*.sqlite
+*.sqlite3
+*.sqbpro
+
+# Sistema / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.ipynb_checkpoints/
+*.log
+
+# Credenciales exportadas de n8n u otros secretos
+*credentials*.json
+*.pem
+*.key
